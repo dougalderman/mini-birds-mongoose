@@ -1,0 +1,20 @@
+{
+        "user": {
+             "email": "doh@msn.com",
+             "username": "homersimpson2000",
+             "level": 98,
+             "location": "Springfield",
+             "member": true
+        },
+        "bird": [{
+          "name": "red breasted merganser",
+          "order": "Anseriformes",
+          "status": "least concern"
+        },{
+          "name": "cedar waxwing",
+          "order": "Passeriformes",
+          "status": "least concern"
+        }],
+        "confirmed": true,
+        "numberSeen": 2
+}

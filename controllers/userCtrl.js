@@ -1,6 +1,6 @@
-// sightingCtrl.js
+// userCtrl.js
 
-var sightingModel = require('./../models/sightingModel');
+var userModel = require('./../models/userModel');
 
 module.exports = {
 
@@ -8,9 +8,9 @@ module.exports = {
         
         console.log('in create');
         console.log('req.body = ', req.body);
-        var newSighting = new sightingModel(req.body);
+        var newUser = new userModel(req.body);
         
-        newSighting.save(function(err, result) {
+        newUser.save(function(err, result) {
             if (err)
                 return res.status(500).send(err);
             else
@@ -21,9 +21,8 @@ module.exports = {
     read: function(req, res) {
         console.log('in read');
         console.log('req.query = ', req.query)
-         sightingModel
+         userModel
          .find(req.query)
-         .populate('user', 'username')
          .exec(function(err, result) {
              console.log('err', err);
              console.log('result', result);
@@ -42,16 +41,12 @@ module.exports = {
          console.log('in update');
          console.log('req.params.id = ', req.params.id);
          console.log('req.body = ', req.body);
-         sightingModel.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, result) {
+         userModel.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, result) {
             if (err)
                 return res.status(500).send(err);
              else                                          
                 res.send(result);  
-        });
-    },
-    
-    addToExistingSighting: function(req, res) {
-        $sighting.findByIdAndUpdate(req.params.id, {$push: {bird: req.body}})
+        }); 
     },
     
     delete: function(req, res) {
@@ -59,7 +54,7 @@ module.exports = {
          console.log('in delete');
          console.log('req.params.id = ', req.params.id);
         
-         sightingModel.findByIdAndRemove(req.params.id, function(err, result) {
+         userModel.findByIdAndRemove(req.params.id, function(err, result) {
              
              if (err)
                  return res.status(500).send(err);
